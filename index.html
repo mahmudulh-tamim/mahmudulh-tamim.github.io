@@ -3,254 +3,680 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahmudul Hasan Tamim | Portfolio</title>
+    <title>Mahmudul Hasan Tamim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* Dark Theme Styling */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:        #f7f5f1;
+            --surface:   #ffffff;
+            --ink:        #1a1916;
+            --ink-muted:  #6b6860;
+            --ink-faint:  #b0aea8;
+            --accent:     #2c4a3e;
+            --rule:       #e2dfd9;
+            --tag-bg:     #eceae4;
+            --tag-ink:    #3d3b35;
+        }
+
+        html { font-size: 17px; scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #e0e0e0; /* Light gray text for readability */
-            max-width: 800px;
+            font-family: 'EB Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+
+        /* ── LAYOUT ── */
+        .page {
+            max-width: 780px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #121212; /* Deep dark background */
+            padding: 0 28px 80px;
         }
-        
-        /* Header section styling */
-        header {
+
+        /* ── TOP NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(247,245,241,0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--rule);
+            padding: 0 28px;
+        }
+        .nav-inner {
+            max-width: 780px;
+            margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
-            margin-bottom: 50px;
-            background-color: #1e1e1e; /* Shaded background */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            height: 52px;
+            gap: 12px;
         }
-        .avatar {
-            width: 130px;
-            height: 130px;
+        .nav-name {
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--ink);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            color: var(--ink-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.18s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ── HEADER ── */
+        .site-header {
+            padding: 72px 0 56px;
+            border-bottom: 1px solid var(--rule);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: start;
+        }
+        .header-name {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+        .header-title {
+            font-size: 0.95rem;
+            font-family: 'DM Mono', monospace;
+            font-weight: 300;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            margin-bottom: 20px;
+        }
+        .header-bio {
+            font-size: 1rem;
+            color: var(--ink-muted);
+            max-width: 520px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        .header-avatar {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            background-color: #333; 
+            border: 1px solid var(--rule);
+            flex-shrink: 0;
+            margin-top: 8px;
         }
-        .header-text h1 {
-            margin: 0 0 5px 0;
-            font-size: 2.2em;
-            color: #ffffff;
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            margin-top: 24px;
         }
-        .header-text h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
-            color: #a0a0a0;
-            font-weight: 500;
-        }
-        .header-text p {
-            margin: 0 0 15px 0;
-            color: #b0b0b0;
-            max-width: 500px;
-            font-size: 0.95em;
-        }
-        .links a {
-            margin-right: 15px;
-            color: #64b5f6; /* Lighter blue for dark mode */
+        .contact-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--ink-muted);
             text-decoration: none;
-            font-weight: 600;
+            letter-spacing: 0.04em;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 1px;
+            transition: color 0.18s, border-color 0.18s;
         }
-        .links a:hover {
-            text-decoration: underline;
-        }
+        .contact-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-        /* Section layout */
+        /* ── SECTIONS ── */
         section {
-            margin-bottom: 50px;
-            background-color: #1e1e1e; /* Shaded background for sections */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 52px 0;
+            border-bottom: 1px solid var(--rule);
         }
-        h3 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-            color: #ffffff;
+        section:last-of-type { border-bottom: none; }
+
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 32px;
         }
 
-        /* Item layout for Experience and Projects */
-        .item {
-            margin-bottom: 30px;
-        }
-        .item:last-child {
-            margin-bottom: 0;
-        }
-        .item-header {
+        /* ── ENTRY ── */
+        .entry { margin-bottom: 36px; }
+        .entry:last-child { margin-bottom: 0; }
+        .entry-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 5px;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-        .item-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: #ffffff;
-        }
-        .item-company {
-            color: #a0a0a0;
+        .entry-title {
+            font-size: 1.05rem;
             font-weight: 500;
+            color: var(--ink);
         }
-        .item-dates {
-            color: #888;
-            font-size: 0.9em;
-            min-width: 120px;
-            text-align: right;
+        .entry-title a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid var(--rule);
+            transition: border-color 0.18s;
         }
-        .item p {
-            margin: 5px 0 0 0;
-            color: #cccccc;
-            font-size: 0.95em;
+        .entry-title a:hover { border-color: var(--accent); }
+        .entry-org {
+            font-size: 0.92rem;
+            color: var(--ink-muted);
+            font-style: italic;
         }
-        
-        .skills-list {
-            color: #cccccc;
-            font-size: 0.95em;
+        .entry-date {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--ink-faint);
+            white-space: nowrap;
+        }
+        .entry-body {
+            font-size: 0.95rem;
+            color: var(--ink-muted);
+            margin-top: 7px;
+            line-height: 1.75;
+        }
+        .entry-sub {
+            font-size: 0.88rem;
+            color: var(--ink-faint);
+            margin-top: 3px;
         }
 
-        /* Footer styling */
+        /* ── PUBLICATION ── */
+        .pub { margin-bottom: 28px; }
+        .pub:last-child { margin-bottom: 0; }
+        .pub-title {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.65;
+        }
+        .pub-authors {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.70rem;
+            color: var(--ink-muted);
+            margin-top: 5px;
+            letter-spacing: 0.01em;
+        }
+        .pub-authors .self { color: var(--accent); font-weight: 400; }
+        .pub-venue {
+            font-size: 0.88rem;
+            color: var(--ink-faint);
+            margin-top: 4px;
+        }
+        .pub-status {
+            display: inline-block;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: var(--tag-bg);
+            color: var(--tag-ink);
+            padding: 2px 7px;
+            border-radius: 2px;
+            margin-top: 6px;
+        }
+
+        /* ── INTERESTS ── */
+        .interests-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .interests-list li {
+            font-size: 0.97rem;
+            color: var(--ink-muted);
+            padding-left: 16px;
+            position: relative;
+        }
+        .interests-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--ink-faint);
+        }
+
+        /* ── SKILLS GRID ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .skill-row {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--rule);
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 16px;
+            align-items: baseline;
+            grid-column: 1 / -1;
+        }
+        .skill-row:last-child { border-bottom: none; }
+        .skill-key {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.70rem;
+            letter-spacing: 0.05em;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+        }
+        .skill-val {
+            font-size: 0.93rem;
+            color: var(--ink);
+        }
+
+        /* ── COURSEWORK ── */
+        .course-group { margin-bottom: 22px; }
+        .course-group:last-child { margin-bottom: 0; }
+        .course-group-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 8px;
+        }
+        .course-list {
+            font-size: 0.93rem;
+            color: var(--ink-muted);
+            line-height: 1.8;
+        }
+
+        /* ── AWARDS ── */
+        .award { margin-bottom: 20px; }
+        .award:last-child { margin-bottom: 0; }
+        .award-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .award-title {
+            font-size: 0.97rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .award-desc {
+            font-size: 0.90rem;
+            color: var(--ink-muted);
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        /* ── FOOTER ── */
         footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #888;
-            font-size: 0.9em;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 32px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid var(--rule);
+        }
+        footer p {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--ink-faint);
+            letter-spacing: 0.05em;
         }
 
-        /* Make it mobile-friendly */
+        /* ── DIVIDER ── */
+        .entry-divider {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 28px 0;
+        }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .item-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .item-dates {
-                margin-top: 5px;
-                margin-bottom: 10px;
-                text-align: left;
-            }
+            .site-header { grid-template-columns: 1fr; }
+            .header-avatar { display: none; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-row { grid-template-columns: 1fr; gap: 4px; }
+            .nav-links { gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img class="avatar" src=20231001_162026.jpg alt="Mahmudul Hasan Tamim">
-        <div class="header-text">
-            <h1>Mahmudul Hasan Tamim</h1>
-            <h2>Graduate Assistant-Research | Texas A&M University</h2>
-            <p>A computational nuclear engineer based in College Station, Texas, with a passion for intellectual exploration and problem-solving. My strengths include rapid assimilation of complex mathematical concepts and their application to engineering challenges, particularly in computational methods for nuclear systems.</p>
-            <div class="links">
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <span class="nav-name">M. H. Tamim</span>
+        <ul class="nav-links">
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#coursework">Coursework</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div>
+            <h1 class="header-name">Mahmudul Hasan Tamim</h1>
+            <p class="header-title">Graduate Research Assistant · Nuclear Engineering · Texas A&amp;M University</p>
+            <p class="header-bio">Computational nuclear engineer working at the intersection of reduced-order modeling, data assimilation, and reactor state estimation. Focused on advancing digital twin capabilities for Molten Salt Reactor systems through novel empirical interpolation methods.</p>
+            <div class="contact-links">
                 <a href="mailto:mahmudulhasantamim@gmail.com">Email</a>
                 <a href="https://github.com/mahmudulh-tamim" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/mahmudul-hasan-tamim" target="_blank">LinkedIn</a>
+                <a href="tel:+19795993683">+1 (979) 599‑3683</a>
+                <a href="#" onclick="return false;">College Station, TX</a>
             </div>
         </div>
+        <img class="header-avatar" src="20231001_162026.jpg" alt="Mahmudul Hasan Tamim">
     </header>
 
-    <section>
-        <h3>Experience</h3>
-        
-        <div class="item">
-            <div class="item-header">
-                <div>
-                    <span class="item-title">Graduate Assistant-Research</span> <br> <span class="item-company">Texas A&M University</span>
-                </div>
-                <div class="item-dates">Aug 2024 - Present</div>
-            </div>
-            <p>Gaining extensive experience on Reduced-Basis Methods based Data Assimilation Algorithms and their applications to enhanced state estimation of Molten Salt Reactor Systems. Gained experience in the Finite Element Method, applying it to numerical solutions of PDEs for reactor analysis.</p>
+    <!-- RESEARCH INTERESTS -->
+    <section id="research">
+        <p class="section-label">Research Interests</p>
+        <ul class="interests-list">
+            <li>Data assimilation techniques for enhanced state estimation in nuclear reactor systems, with emphasis on digital twin development</li>
+            <li>Advanced neutron transport methods for next-generation reactor simulation</li>
+        </ul>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+        <p class="section-label">Publications &amp; Manuscripts</p>
+
+        <div class="pub">
+            <p class="pub-title">"A Generalized Empirical Interpolation Method for direct Multi-physics State Reconstruction"</p>
+            <p class="pub-authors">
+                <span class="self">Tamim, M. H.</span>, Silva, F. A. B., Krpan, R., Fiorina, C., &amp; Ragusa, J. C.
+            </p>
+            <p class="pub-venue"><em>Applied Mathematical Modelling</em></p>
+            <span class="pub-status">Under Review</span>
         </div>
 
-        <div class="item">
-            <div class="item-header">
-                <div>
-                    <span class="item-title">Research Reactor Intern</span> <br> <span class="item-company">Bangladesh Atomic Energy Commission</span>
-                </div>
-                <div class="item-dates">Nov 2022</div>
-            </div>
-            <p>Gained hands-on experience with TRIGA MARK-II Research Reactor systems and operational procedures through comprehensive technical training. Analyzed reactor operations, developing practical understanding of control systems and safety procedures.</p>
+        <hr class="entry-divider">
+
+        <div class="pub">
+            <p class="pub-title">"Multifield Generalized Empirical Interpolation Method For Sensor Selection and State Estimation in Molten Salt Reactors"</p>
+            <p class="pub-authors">
+                <span class="self">Tamim, M. H.</span>, Silva, F. A. B., Krpan, R., Fiorina, C., &amp; Ragusa, J. C.
+            </p>
+            <p class="pub-venue"><em>PHYSOR 2026</em></p>
+            <span class="pub-status">Under Review</span>
         </div>
     </section>
 
-    <section>
-        <h3>Education</h3>
-        
-        <div class="item">
-            <div class="item-header">
+    <!-- EDUCATION -->
+    <section id="education">
+        <p class="section-label">Education</p>
+
+        <div class="entry">
+            <div class="entry-row">
                 <div>
-                    <span class="item-title">Master of Science (MS) in Nuclear Engineering</span> <br> <span class="item-company">Texas A&M University</span>
+                    <p class="entry-title">Master of Science in Nuclear Engineering</p>
+                    <p class="entry-org">Texas A&amp;M University</p>
                 </div>
-                <div class="item-dates">Aug 2024 - May 2026</div>
+                <span class="entry-date">Aug 2024 – May 2026</span>
             </div>
-            <p>CGPA: 4.00/4.00 | Inductee, Phi Kappa Phi Honor Society.</p>
+            <p class="entry-body">CGPA: 4.00 / 4.00 &nbsp;·&nbsp; College Station, Texas</p>
+            <p class="entry-sub">Inductee, Phi Kappa Phi Honor Society</p>
         </div>
 
-        <div class="item">
-            <div class="item-header">
+        <hr class="entry-divider">
+
+        <div class="entry">
+            <div class="entry-row">
                 <div>
-                    <span class="item-title">Bachelor of Science (BS) in Nuclear Engineering</span> <br> <span class="item-company">University of Dhaka</span>
+                    <p class="entry-title">Bachelor of Science in Nuclear Engineering</p>
+                    <p class="entry-org">University of Dhaka</p>
                 </div>
-                <div class="item-dates">Jan 2019 - Mar 2024</div>
+                <span class="entry-date">Jan 2019 – Mar 2024</span>
             </div>
-            <p>CGPA: 3.87/4.00 | Class Rank: 3rd of cohort | Dean's Award Recipient.</p>
+            <p class="entry-body">CGPA: 3.87 / 4.00 &nbsp;·&nbsp; Class Rank: 3<sup>rd</sup> of cohort &nbsp;·&nbsp; Dhaka, Bangladesh</p>
+            <p class="entry-sub">Dean's Award Recipient, Faculty of Engineering and Technology</p>
         </div>
     </section>
 
-    <section>
-        <h3>Research & Projects</h3>
-        
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">DAFOAM: Data Assimilation in OpenFOAM</span>
-                <div class="item-dates">2024 - Present</div>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <p class="section-label">Professional Experience</p>
+
+        <div class="entry">
+            <div class="entry-row">
+                <div>
+                    <p class="entry-title">Graduate Assistant – Research</p>
+                    <p class="entry-org">Department of Nuclear Engineering, Texas A&amp;M University</p>
+                </div>
+                <span class="entry-date">Aug 2024 – Present</span>
             </div>
-            <p>Developing a Python-based tool applicable to OpenFOAM and GeN-Foam cases for data assimilation. Contributed to testing a new variation of the Generalized Empirical Interpolation Method (GEIM) to combine multifield sensor data.</p>
+            <p class="entry-body">
+                Developing novel variants of the Generalized Empirical Interpolation Method (GEIM) for multifield, multiphysics state estimation of Molten Salt Reactor systems. Work spans reduced-order modeling, sensor selection theory, and OpenFOAM/GeN-Foam simulation frameworks. Gained experience in the Finite Element Method applied to numerical solutions of PDEs for reactor analysis.
+            </p>
         </div>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">2D Neutron Transport Equation Solvers</span>
-                <div class="item-dates">2023 - 2024</div>
-            </div>
-            <p>Engineered software packages implementing the Method of Characteristics (MoC) and discrete ordinates (SN) methods to solve the 2D neutron transport equation. Modeled heterogeneous checkerboard problems in MATLAB.</p>
-        </div>
+        <hr class="entry-divider">
 
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Selected Publications</span>
+        <div class="entry">
+            <div class="entry-row">
+                <div>
+                    <p class="entry-title">Research Reactor Intern</p>
+                    <p class="entry-org">Centre for Research Reactor, Bangladesh Atomic Energy Commission</p>
+                </div>
+                <span class="entry-date">Nov 2022</span>
             </div>
-            <p>• <em>"A Generalized Empirical Interpolation Method for direct Multi-physics State Reconstruction."</em> Submitted to Applied Mathematical Modelling.<br>
-            • <em>"Multifield Generalized Empirical Interpolation Method For Sensor Selection and State Estimation in Molten Salt Reactors."</em> Submitted to PHYSOR 2026.</p>
+            <p class="entry-body">
+                Gained hands-on experience with the TRIGA MARK-II Research Reactor at AERE, Savar. Observed and analyzed reactor operations and experimental protocols, developing practical understanding of control systems, safety procedures, and research reactor applications.
+            </p>
         </div>
     </section>
 
-    <section>
-        <h3>Technical Competencies</h3>
-        <div class="skills-list">
-            <p><strong>Programming Languages:</strong> C, C++, MATLAB, Python, BASH</p>
-            <p><strong>Transport Codes:</strong> OpenMC, OpenSN</p>
-            <p><strong>Development Tools:</strong> Git, GitHub, Linux</p>
+    <!-- RESEARCH PROJECTS -->
+    <section id="projects">
+        <p class="section-label">Research Projects</p>
+
+        <div class="entry">
+            <div class="entry-row">
+                <div>
+                    <p class="entry-title">
+                        <a href="https://github.com/ragusa/DAFOAM.git" target="_blank">DAFOAM: Data Assimilation in OpenFOAM</a>
+                    </p>
+                </div>
+                <span class="entry-date">2024 – Present</span>
+            </div>
+            <p class="entry-body">
+                Contributing to a Python-based data assimilation toolchain compatible with OpenFOAM and GeN-Foam cases. Led development and testing of a new MF-GEIM variant that fuses multifield sensor measurements for coupled neutronics–thermal-hydraulics state reconstruction in the Molten Salt Reactor Experiment (MSRE).
+            </p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="entry">
+            <div class="entry-row">
+                <div>
+                    <p class="entry-title">
+                        <a href="https://github.com/mahmudulh-tamim/2D-MOC-Benchmark-Examples" target="_blank">2D Neutron Transport Solver — Method of Characteristics</a>
+                    </p>
+                </div>
+                <span class="entry-date">2023 – 2024</span>
+            </div>
+            <p class="entry-body">
+                Developed a MATLAB software package (undergraduate thesis) implementing the Method of Characteristics (MoC) for the 2D neutron transport equation. Engineered two distinct solvers using flat-source and linear-source approximations; validated against established benchmark problems.
+            </p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="entry">
+            <div class="entry-row">
+                <div>
+                    <p class="entry-title">
+                        <a href="https://github.com/mahmudulh-tamim/Development-of-a-2D-SN-Method-based-transport-solver" target="_blank">2D Neutron Transport Solver — Discrete Ordinates (S<sub>N</sub>)</a>
+                    </p>
+                </div>
+                <span class="entry-date">2023</span>
+            </div>
+            <p class="entry-body">
+                Designed and implemented a discrete ordinates solver for the 2D neutron transport equation in MATLAB. Successfully modeled a challenging heterogeneous checkerboard problem with spatially varying fission cross-sections.
+            </p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="entry">
+            <div class="entry-row">
+                <div>
+                    <p class="entry-title">Prototype Radiation Mapping System via UAV</p>
+                </div>
+                <span class="entry-date">2022 – 2023</span>
+            </div>
+            <p class="entry-body">
+                Conceptualized and built a prototype airborne radiation mapping system integrating an ESP32 microcontroller with a BH1750 sensor, programmed via Arduino IDE. The lightweight system was designed for environmental radiation monitoring. <em>Awarded second prize, projects category, Nuclear Fest 2023, University of Dhaka.</em>
+            </p>
         </div>
     </section>
 
-    <footer>
-        <p>Last updated in 2026.</p>
-        <p>&copy; 2026 Mahmudul Hasan Tamim</p>
-    </footer>
+    <!-- AWARDS -->
+    <section id="awards">
+        <p class="section-label">Awards &amp; Honors</p>
 
-    
+        <div class="award">
+            <div class="award-row">
+                <p class="award-title">Inductee, Phi Kappa Phi Honor Society</p>
+                <span class="entry-date">2026</span>
+            </div>
+            <p class="award-desc">Invited based on academic excellence during MS studies at Texas A&amp;M University.</p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="award">
+            <div class="award-row">
+                <p class="award-title">Dean's Award</p>
+                <span class="entry-date">2025</span>
+            </div>
+            <p class="award-desc">Faculty of Engineering and Technology, University of Dhaka — awarded for outstanding academic achievement in the BS Honors in Nuclear Engineering program.</p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="award">
+            <div class="award-row">
+                <p class="award-title">Bangladesh Government Scholarship (Nominee)</p>
+                <span class="entry-date">2025</span>
+            </div>
+            <p class="award-desc">Nominated for high achievement on BS examination results.</p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="award">
+            <div class="award-row">
+                <p class="award-title">Mathematics Olympiad — National Training Camp Qualifier</p>
+                <span class="entry-date">Secondary School</span>
+            </div>
+            <p class="award-desc">Two-time national qualifier for Bangladesh Mathematics Olympiad training camps, demonstrating early aptitude for mathematical reasoning and problem-solving.</p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="award">
+            <div class="award-row">
+                <p class="award-title">Second Prize, Projects Category — Nuclear Fest 2023</p>
+                <span class="entry-date">2023</span>
+            </div>
+            <p class="award-desc">University of Dhaka, for the prototype UAV-based radiation mapping system.</p>
+        </div>
+    </section>
+
+    <!-- COURSEWORK -->
+    <section id="coursework">
+        <p class="section-label">Relevant Coursework</p>
+
+        <div class="course-group">
+            <p class="course-group-label">Computational Methods &amp; Mathematics</p>
+            <p class="course-list">Numerical Methods in Partial Differential Equations &nbsp;·&nbsp; Radiation Transport Methods &nbsp;·&nbsp; Methods &amp; Applications of PDEs &nbsp;·&nbsp; Numerical Methods for Reactor Engineering</p>
+        </div>
+
+        <hr class="entry-divider">
+
+        <div class="course-group">
+            <p class="course-group-label">Nuclear Systems &amp; Physics</p>
+            <p class="course-list">Reactor Theory &amp; Analysis &nbsp;·&nbsp; Advanced Reactor Design &nbsp;·&nbsp; Fusion Power Engineering &nbsp;·&nbsp; Thermal Hydraulics and Reactor Safety &nbsp;·&nbsp; Radiation Interactions and Shielding &nbsp;·&nbsp; Radiation Detection and Nuclear Materials Measurement &nbsp;·&nbsp; Nuclear Fuel Cycle</p>
+        </div>
+    </section>
+
+    <!-- TECHNICAL COMPETENCIES -->
+    <section id="skills">
+        <p class="section-label">Technical Competencies</p>
+        <div class="skills-grid">
+            <div class="skill-row">
+                <span class="skill-key">Languages</span>
+                <span class="skill-val">Python, MATLAB, C, C++, Bash</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-key">Transport Codes</span>
+                <span class="skill-val">OpenMC, OpenSN</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-key">Simulation</span>
+                <span class="skill-val">OpenFOAM, GeN-Foam, ParaView</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-key">Tools &amp; Platforms</span>
+                <span class="skill-val">Git, GitHub, Linux</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-key">Methods</span>
+                <span class="skill-val">Reduced-Order Modeling, Data Assimilation, FEM, POD, GEIM</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-key">Languages (Human)</span>
+                <span class="skill-val">English (C1 — Advanced) &nbsp;·&nbsp; Bengali (Native) &nbsp;·&nbsp; Arabic (Advanced Familiarity)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADDITIONAL -->
+    <section id="additional">
+        <p class="section-label">Additional Experience</p>
+        <ul class="interests-list">
+            <li>Mentored middle-school students for Mathematics Olympiad competitions, cultivating problem-solving skills and mathematical intuition</li>
+            <li>Provided targeted instruction in advanced high-school Mathematics and Physics during undergraduate studies</li>
+            <li>Concurrently pursued Arabic language studies at the Institute of Modern Language, University of Dhaka, achieving academic excellence alongside a demanding engineering curriculum</li>
+            <li>Engaged with literature across multiple cultural traditions; ongoing interest in language acquisition and comparative thought</li>
+        </ul>
+    </section>
+
+</div><!-- /page -->
+
+<footer>
+    <p>Mahmudul Hasan Tamim &nbsp;·&nbsp; College Station, Texas</p>
+    <p>Last updated 2026</p>
+</footer>
+
 </body>
-
 </html>
